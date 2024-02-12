@@ -1,26 +1,36 @@
 import React from "react";
 import { Octicons } from "@expo/vector-icons";
-import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 
 export default function CurrentWeather() {
+  const {
+    wrapper,
+    container,
+    temp,
+    feels,
+    rangeWrapper,
+    range,
+    footerText1,
+    footerText2,
+    footerWrapper
+  } = styles;
+
   return (
-    <View style={styles.wrapper}>
-      <View style={styles.container}>
+    <SafeAreaView style={wrapper}>
+      <View style={container}>
         <Octicons name="sun" size={100} color="black" />
-        <Text style={styles.temp}>6</Text>
-        <Text style={styles.feels}>Feels like 5</Text>
-        <View style={styles.rangeWrapper}>
-          <Text style={styles.range}>High: 8</Text>
-          <Text style={styles.range}>Low: 6</Text>
+        <Text style={temp}>6</Text>
+        <Text style={feels}>Feels like 5</Text>
+        <View style={rangeWrapper}>
+          <Text style={range}>High: 8</Text>
+          <Text style={range}>Low: 6</Text>
         </View>
       </View>
-      <View style={styles.footerWrapper}>
-        <Text style={styles.footerText1}>It&apos;s sunny</Text>
-        <Text style={styles.footerText2}>
-          It&apos;s perfect t-shirt weather
-        </Text>
+      <View style={footerWrapper}>
+        <Text style={footerText1}>It&apos;s sunny</Text>
+        <Text style={footerText2}>It&apos;s perfect t-shirt weather</Text>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 

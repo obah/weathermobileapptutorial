@@ -1,13 +1,15 @@
-import CurrentWeather from "./src/components/current-weather";
+import City from "./src/screens/city";
+import CurrentWeather from "./src/screens/current-weather";
 import React from "react";
-import UpcomingWeather from "./src/components/upcoming-weather";
+import UpcomingWeather from "./src/screens/upcoming-weather";
 import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 
 export default function App() {
   return (
     <SafeAreaView style={styles.container}>
       {/* <CurrentWeather /> */}
-      <UpcomingWeather />
+      {/* <UpcomingWeather /> */}
+      <City />
     </SafeAreaView>
   );
 }
