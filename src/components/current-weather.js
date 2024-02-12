@@ -1,11 +1,10 @@
 import React from "react";
 import { Octicons } from "@expo/vector-icons";
-import { SafeAreaView } from "react-native-safe-area-context";
 import { StyleSheet, Text, View } from "react-native";
 
 export default function CurrentWeather() {
   return (
-    <SafeAreaView style={styles.wrapper}>
+    <View style={styles.wrapper}>
       <View style={styles.container}>
         <Octicons name="sun" size={100} color="black" />
         <Text style={styles.temp}>6</Text>
@@ -21,7 +20,7 @@ export default function CurrentWeather() {
           It&apos;s perfect t-shirt weather
         </Text>
       </View>
-    </SafeAreaView>
+    </View>
   );
 }
 

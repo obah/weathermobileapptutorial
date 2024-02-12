@@ -1,20 +1,20 @@
 import CurrentWeather from "./src/components/current-weather";
 import React from "react";
-import { SafeAreaProvider } from "react-native-safe-area-context";
-import { StyleSheet, View } from "react-native";
+import UpcomingWeather from "./src/components/upcoming-weather";
+import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 
 export default function App() {
   return (
-    <SafeAreaProvider>
-      <View style={styles.container}>
-        <CurrentWeather />
-      </View>
-    </SafeAreaProvider>
+    <SafeAreaView style={styles.container}>
+      {/* <CurrentWeather /> */}
+      <UpcomingWeather />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginTop: StatusBar.currentHeight || 0
   }
 });
