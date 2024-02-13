@@ -5,11 +5,17 @@ import UpcomingWeather from "./src/screens/upcoming-weather";
 import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
 
 export default function App() {
+  const show = 1;
+
   return (
     <SafeAreaView style={styles.container}>
-      {/* <CurrentWeather /> */}
-      {/* <UpcomingWeather /> */}
-      <City />
+      {show === 1 ? (
+        <CurrentWeather />
+      ) : show === 2 ? (
+        <UpcomingWeather />
+      ) : (
+        <City />
+      )}
     </SafeAreaView>
   );
 }

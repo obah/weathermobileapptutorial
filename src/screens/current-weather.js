@@ -1,6 +1,7 @@
 import React from "react";
 import { Octicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
+import RowText from "../components/row-text";
 
 export default function CurrentWeather() {
   const {
@@ -21,15 +22,20 @@ export default function CurrentWeather() {
         <Octicons name="sun" size={100} color="black" />
         <Text style={temp}>6</Text>
         <Text style={feels}>Feels like 5</Text>
-        <View style={rangeWrapper}>
-          <Text style={range}>High: 8</Text>
-          <Text style={range}>Low: 6</Text>
-        </View>
+        <RowText
+          mainText={"High: 8"}
+          subText={"Low: 6"}
+          textStyle={range}
+          wrapperStyle={rangeWrapper}
+        />
       </View>
-      <View style={footerWrapper}>
-        <Text style={footerText1}>It&apos;s sunny</Text>
-        <Text style={footerText2}>It&apos;s perfect t-shirt weather</Text>
-      </View>
+      <RowText
+        mainText={"It's sunny"}
+        subText={"It's perfect t-shirt weather"}
+        textStyle={footerText1}
+        subTextStyle={footerText2}
+        wrapperStyle={footerWrapper}
+      />
     </SafeAreaView>
   );
 }
