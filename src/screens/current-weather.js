@@ -2,6 +2,7 @@ import React from "react";
 import { Octicons } from "@expo/vector-icons";
 import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import RowText from "../components/row-text";
+import { weatherType } from "../utilities/weather-type";
 
 export default function CurrentWeather() {
   const {
@@ -31,7 +32,7 @@ export default function CurrentWeather() {
       </View>
       <RowText
         mainText={"It's sunny"}
-        subText={"It's perfect t-shirt weather"}
+        subText={weatherType["Thunderstorm"].message}
         textStyle={footerText1}
         subTextStyle={footerText2}
         wrapperStyle={footerWrapper}
