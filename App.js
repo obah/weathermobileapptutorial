@@ -1,28 +1,11 @@
-import City from "./src/screens/city";
-import CurrentWeather from "./src/screens/current-weather";
+import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
-import UpcomingWeather from "./src/screens/upcoming-weather";
-import { SafeAreaView, StatusBar, StyleSheet } from "react-native";
+import Tabs from "./src/components/tabs";
 
 export default function App() {
-  const show = 1;
-
   return (
-    <SafeAreaView style={styles.container}>
-      {show === 1 ? (
-        <CurrentWeather />
-      ) : show === 2 ? (
-        <UpcomingWeather />
-      ) : (
-        <City />
-      )}
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tabs />
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginTop: StatusBar.currentHeight || 0
-  }
-});
