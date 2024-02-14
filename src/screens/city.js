@@ -1,5 +1,7 @@
 /* global require */
+import IconText from "../components/icon-text";
 import React from "react";
+import moment from "moment";
 import {
   ImageBackground,
   SafeAreaView,
@@ -7,9 +9,10 @@ import {
   Text,
   View
 } from "react-native";
-import IconText from "../components/icon-text";
 
-export default function City() {
+export default function City({ data }) {
+  const { name, country, population, sunrise, sunset } = data;
+
   const {
     container,
     background,
@@ -27,15 +30,15 @@ export default function City() {
         source={require("../../assets/city.jpg")}
         style={background}
       >
-        <Text style={[cityName, cityText]}>London</Text>
-        <Text style={[countryName, cityText]}>UK</Text>
+        <Text style={[cityName, cityText]}>{name}</Text>
+        <Text style={[countryName, cityText]}>{country}</Text>
 
         <View style={itemWrapper}>
           <IconText
-            color={"#007FFF"}
+            color={"#195859"}
             icon={"user"}
             size={50}
-            text={"10,000"}
+            text={`Population: ${population}`}
             textStyle={populationText}
           />
         </View>
@@ -45,14 +48,14 @@ export default function City() {
             color={"white"}
             icon={"sunrise"}
             size={50}
-            text={"09:30:00am"}
+            text={moment(sunrise).format("h:mm:ss a")}
             textStyle={riseSetText}
           />
           <IconText
             color={"white"}
             icon={"sunset"}
             size={50}
-            text={"17:45:00pm"}
+            text={moment(sunset).format("h:mm:ss a")}
             textStyle={riseSetText}
           />
         </View>
@@ -88,7 +91,7 @@ const styles = StyleSheet.create({
   populationText: {
     fontSize: 25,
     marginLeft: 7.5,
-    color: "#007FFF",
+    color: "#195859",
     fontWeight: "bold"
   },
   riseSetText: {

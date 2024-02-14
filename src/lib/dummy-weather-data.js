@@ -1,4 +1,4 @@
-export const weather_data = [
+export const dummy_weather_data = [
   {
     main: {
       temp_min: 296.34,

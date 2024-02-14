@@ -1,14 +1,14 @@
 import React from "react";
-import { Octicons } from "@expo/vector-icons";
-import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 import RowText from "../components/row-text";
+import { Feather } from "@expo/vector-icons";
 import { weatherType } from "../utilities/weather-type";
+import { StyleSheet, Text, View, SafeAreaView } from "react-native";
 
-export default function CurrentWeather() {
+export default function CurrentWeather({ data }) {
   const {
     wrapper,
     container,
-    temp,
+    tempStyle,
     feels,
     rangeWrapper,
     range,
@@ -17,22 +17,38 @@ export default function CurrentWeather() {
     footerWrapper
   } = styles;
 
+  const {
+    main: { feels_like, temp_max, temp_min, temp },
+    weather
+  } = data;
+
+  const weatherCondition = weather[0].main;
+
   return (
-    <SafeAreaView style={wrapper}>
+    <SafeAreaView
+      style={[
+        wrapper,
+        { backgroundColor: weatherType[weatherCondition].backgroundColor }
+      ]}
+    >
       <View style={container}>
-        <Octicons name="sun" size={100} color="black" />
-        <Text style={temp}>6</Text>
-        <Text style={feels}>Feels like 5</Text>
+        <Feather
+          name={weatherType[weatherCondition].icon}
+          size={100}
+          color="white"
+        />
+        <Text style={tempStyle}>{`${temp}°`}</Text>
+        <Text style={feels}>{`Feels like ${feels_like}°`}</Text>
         <RowText
-          mainText={"High: 8"}
-          subText={"Low: 6"}
+          mainText={`High: ${temp_max}°`}
+          subText={`Low: ${temp_min}°`}
           textStyle={range}
           wrapperStyle={rangeWrapper}
         />
       </View>
       <RowText
-        mainText={"It's sunny"}
-        subText={weatherType["Thunderstorm"].message}
+        mainText={weather[0].description}
+        subText={weatherType[weatherCondition].message}
         textStyle={footerText1}
         subTextStyle={footerText2}
         wrapperStyle={footerWrapper}
@@ -50,7 +66,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center"
   },
-  temp: {
+  tempStyle: {
     color: "purple",
     fontSize: 48
   },
@@ -75,9 +91,11 @@ const styles = StyleSheet.create({
     paddingLeft: 25
   },
   footerText1: {
-    fontSize: 48
+    fontSize: 48,
+    color: "white"
   },
   footerText2: {
-    fontSize: 30
+    fontSize: 30,
+    color: "white"
   }
 });

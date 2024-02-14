@@ -5,7 +5,7 @@ import React from "react";
 import UpcomingWeather from "../screens/upcoming-weather";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
-export default function Tabs() {
+export default function Tabs({ data }) {
   const Tab = createBottomTabNavigator();
 
   return (
@@ -28,7 +28,6 @@ export default function Tabs() {
     >
       <Tab.Screen
         name="Current"
-        component={CurrentWeather}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -38,10 +37,12 @@ export default function Tabs() {
             />
           )
         }}
-      />
+      >
+        {() => <CurrentWeather data={data.list[0]} />}
+      </Tab.Screen>
+
       <Tab.Screen
         name="Upcoming"
-        component={UpcomingWeather}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather
@@ -51,16 +52,20 @@ export default function Tabs() {
             />
           )
         }}
-      />
+      >
+        {() => <UpcomingWeather data={data.list} />}
+      </Tab.Screen>
+
       <Tab.Screen
         name="City"
-        component={City}
         options={{
           tabBarIcon: ({ focused }) => (
             <Feather name="home" size={25} color={focused ? "blue" : "black"} />
           )
         }}
-      />
+      >
+        {() => <City data={data.city} />}
+      </Tab.Screen>
     </Tab.Navigator>
   );
 }
