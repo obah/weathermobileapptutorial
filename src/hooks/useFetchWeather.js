@@ -42,5 +42,5 @@ export default function useFetchWeather() {
     })();
   }, [latitude, longitude]);
 
-  return [isLoading, errorMsg, weatherData];
+  return [isLoading, errorMsg, weatherData, fetchWeatherData];
 }

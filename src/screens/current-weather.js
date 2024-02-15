@@ -91,11 +91,11 @@ const styles = StyleSheet.create({
     paddingLeft: 25
   },
   footerText1: {
-    fontSize: 48,
+    fontSize: 43,
     color: "white"
   },
   footerText2: {
-    fontSize: 30,
+    fontSize: 25,
     color: "white"
   }
 });

@@ -1,3 +1,4 @@
+import Error from "./src/components/error";
 import { NavigationContainer } from "@react-navigation/native";
 import React from "react";
 import Tabs from "./src/components/tabs";
@@ -16,9 +17,15 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <ActivityIndicator size={"large"} color={"blue"} />
-    </View>
+    <>
+      {isLoading ? (
+        <View style={styles.container}>
+          <ActivityIndicator size={"large"} color={"blue"} />
+        </View>
+      ) : errorMsg ? (
+        <Error />
+      ) : null}
+    </>
   );
 }
 
